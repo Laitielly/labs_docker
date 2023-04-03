@@ -1,0 +1,16 @@
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y && apt-get install libglib2.0-0
+
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+
+COPY open_mer open_mer
+COPY requirements.txt .
+COPY utt.mp3 .
+
+RUN pip install -r requirements.txt
+CMD python3 open_mer/main.py
+
+
+
+
